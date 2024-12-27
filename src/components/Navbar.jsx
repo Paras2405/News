@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { Link } from 'react-router-dom'
-const Navbar = () => {
+const Navbar = ({ onCategoryChange }) => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-dark">
   <div className="container-fluid">
-    <Link className="navbar-brand text-white" to='/Home'>My News</Link>
+    <Link className="navbar-brand text-white" to='#'>My News</Link>
     <button
   className="navbar-toggler"
   type="button"
@@ -27,25 +27,22 @@ const Navbar = () => {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link className="nav-link active text-white" aria-current="page" to='/Home'>Home</Link>
+          <Link className="nav-link text-white" to='/category/Sports'>Sports</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link text-white" to='/Sports'>Sports</Link>
+          <Link className="nav-link text-white" to='/category/Entertainment'>Entertainment</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link text-white" to='/Entertainment'>Entertainment</Link>
+          <Link className="nav-link text-white" to='/category/science'>Education</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link text-white" to='/Education'>Education</Link>
+          <Link className="nav-link text-white" to='/category/Technology'>Technology</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link text-white" to='/Technology'>Technology</Link>
+          <Link className="nav-link text-white" to='/category/business'>Finance</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link text-white" to='/Finance'>Finance</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link text-white" to='/Health'>Health</Link>
+          <Link className="nav-link text-white" to='/category/Health'>Health</Link>
         </li>
         
       </ul>

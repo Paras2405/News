@@ -4,31 +4,43 @@ import { useState,useRef } from 'react'
 import { useEffect } from 'react'
 import Spinner from './Spinner'
 import LoadingBar from "react-top-loading-bar"; 
-const News = ({category}) => {
-const API_KEY="d01e1ae5d1964eb181cf111e97e3689e"
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+const News = () => {
+
     const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(false)
+    const { category } = useParams(); 
+
    const loadingBarRef=useRef(null)
  
 
     useEffect(() => {
 
    const fetchnews=async()=>{
+    const API_KEY = 'd01e1ae5d1964eb181cf111e97e3689e';
     loadingBarRef.current.continuousStart()
     setLoading(true)
-    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}&category=${category}`)
-    const data = await response.json()
-    console.log(data)
-    setLoading(false)
-    if(data.articles){
-      setArticles(data.articles)
+    try {
+      const response = await axios.get('https://news-back-5klw.onrender.com/api/news', {
+        params: {
+          country: 'us',
+          category: category, // Pass the selected category here
+          apiKey: API_KEY,
+        },
+      });
+      setArticles(response.data.articles);
+    } catch (error) {
+      console.error('Error fetching news:', error);
     }
-   
+    setLoading(false)
+    
+
       loadingBarRef.current.complete(); // Complete the loading bar
  
    }
     fetchnews()
-    }, [])
+    }, [category])
     
   return (
     <div className='container mt-3'>
