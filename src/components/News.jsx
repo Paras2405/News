@@ -6,7 +6,7 @@ import Spinner from './Spinner'
 import LoadingBar from "react-top-loading-bar"; 
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-const News = () => {
+const News = ({mode}) => {
 
     const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(false)
@@ -45,7 +45,7 @@ const News = () => {
   return (
     <div className='container mt-3'>
           <LoadingBar color="#f11946" ref={loadingBarRef} shadow={true} />
-      <h2 className='text-center mb-3'>My News -Top Headlines</h2>
+      <h2 id="head"  className={`text-center  mb-3`}>My News -Top Headlines</h2>
       {loading && <Spinner/>}
       <div className="row">
        
